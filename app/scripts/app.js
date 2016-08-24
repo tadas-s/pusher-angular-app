@@ -11,7 +11,8 @@
 angular
   .module('boopApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'pusher-angular'
   ])
   .config(function ($routeProvider) {
     $routeProvider
