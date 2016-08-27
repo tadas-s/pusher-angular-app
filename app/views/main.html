@@ -1,3 +1,25 @@
+<h2>Updates via controllers</h2>
+
 <p>Messages I'm getting:</p>
 
 <pre>{{ messages }}</pre>
+
+<h2>Updates via directives</h2>
+
+<ul>
+  <li>
+    <input type="checkbox" ng-model="sample1">
+    test_channel/my_event:<br/>
+    <watch ng-if="sample1" channel="test_channel" event="my_event" /></watch>
+  </li>
+  <li>
+    <input type="checkbox" ng-model="sample2">
+    test_channel/another_event:<br/>
+    <watch ng-if="sample2" channel="test_channel" event="another_event" /></watch>
+  </li>
+  <li>
+    <input type="checkbox" ng-model="sample3">
+    another_channel/another_event:<br/>
+    <watch ng-if="sample3" channel="another_channel" event="another_event" /></watch>
+  </li>
+</ul>

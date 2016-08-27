@@ -8,17 +8,16 @@
  * Controller of the boopApp
  */
 angular.module('boopApp')
-  .controller('MainCtrl', function ($pusher, $window, $scope) {
+  .controller('MainCtrl', function (pConnection, $window, $scope, $log) {
     $scope.messages = [];
+    var channel = pConnection.subscribe('test_channel', $scope);
 
-    var pusher = $pusher(new Pusher('f6169e7dc9bc0d5ab905', {
-      cluster: 'eu',
-      encrypted: true
-    }));
+    channel.on('my_event', function(e) {
+      $log.info('Got the data: ', e);
+      $scope.messages.push(e.data);
+    });
 
-    var channel = pusher.subscribe('test');
-    pusher.bind('message', function(data) {
-      console.log(data);
-      $scope.messages.push(data);
+    channel.on('my_event', function(e) {
+      $log.info('Another callback on the same event: ', e.data);
     });
   });

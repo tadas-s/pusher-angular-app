@@ -29,4 +29,16 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function (pConnectionProvider) {
+    pConnectionProvider.configure(
+      'f6169e7dc9bc0d5ab905',
+      {
+        cluster: 'eu',
+        encrypted: true
+      }
+    );
+  })
+  .config(function ($logProvider) {
+    $logProvider.debugEnabled();
   });
